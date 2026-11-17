@@ -113,6 +113,19 @@ Apply `disintegrate` before `clip`/`background` in the modifier chain so the sna
 buttons that should stay visible outside the container you dust. The sample app has a tab for each case,
 including a **Snap screen** button.
 
+## Gallery
+
+Every effect, rendered with the library's own particle engine. Open
+[docs/showcase/index.html](docs/showcase/index.html) for an interactive version with the code for each.
+
+| Left to right | Right to left | Top to bottom |
+| --- | --- | --- |
+| <img src="docs/showcase/gifs/direction-left-to-right.gif" width="260"> | <img src="docs/showcase/gifs/direction-right-to-left.gif" width="260"> | <img src="docs/showcase/gifs/direction-top-to-bottom.gif" width="260"> |
+| **Bottom to top** | **Random** | **Wind and scatter** |
+| <img src="docs/showcase/gifs/direction-bottom-to-top.gif" width="260"> | <img src="docs/showcase/gifs/direction-random.gif" width="260"> | <img src="docs/showcase/gifs/wind-scatter.gif" width="260"> |
+| **Image** | **Whole screen** | **Dismiss a list item** |
+| <img src="docs/showcase/gifs/image.gif" width="260"> | <img src="docs/showcase/gifs/screen.gif" width="260"> | <img src="docs/showcase/gifs/list-dismiss.gif" width="260"> |
+
 ## Tuning
 
 Pass a `DustConfig` to `rememberDisintegrationState(config)`:
