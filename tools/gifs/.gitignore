@@ -1,0 +1,5 @@
+build/
+.gradle/
+scenes/
+frames/
+out/

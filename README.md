@@ -23,25 +23,49 @@ Early release (0.1.0). The particle engine is plain Kotlin and covered by unit t
 and sample app are built by CI; if something misbehaves on your device, please
 [open an issue](https://github.com/RaiyanShahid91/DustAway/issues/new/choose).
 
-Not published to Maven Central or JitPack yet, see **Install**.
+Available through [JitPack](https://jitpack.io/#RaiyanShahid91/DustAway) once a release tag is published.
 
 ## Install
 
-DustAway is not on a public repository yet. Until it is, add it as a Git submodule or copy the
-`dustaway` module into your project:
+Add JitPack to your repositories:
 
 ```kotlin
 // settings.gradle.kts
-include(":dustaway")
-project(":dustaway").projectDir = File("path/to/DustAway/dustaway")
-
-// app/build.gradle.kts
-dependencies {
-    implementation(project(":dustaway"))
+dependencyResolutionManagement {
+    repositories {
+        google()
+        mavenCentral()
+        maven("https://jitpack.io")
+    }
 }
 ```
 
+Then add the dependency:
+
+```kotlin
+// app/build.gradle.kts
+dependencies {
+    implementation("com.github.RaiyanShahid91.DustAway:dustaway:0.1.0")
+}
+```
+
+Prefer not to use JitPack? Copy the `dustaway` module into your project and use
+`implementation(project(":dustaway"))`.
+
 Requires minSdk 24 and Jetpack Compose UI 1.7 or newer (it uses `GraphicsLayer` to capture content).
+
+## Use it in 3 steps
+
+1. Add JitPack and the dependency (see **Install** above), then sync Gradle.
+2. In your composable, create a state and attach the modifier:
+
+   ```kotlin
+   val state = rememberDisintegrationState()
+   Image(painter, contentDescription = null, modifier = Modifier.disintegrate(state))
+   ```
+
+3. Trigger it from a coroutine: `scope.launch { state.disintegrate() }`, and bring it back with
+   `scope.launch { state.restore() }`.
 
 ## Quick start
 
@@ -88,6 +112,19 @@ Column(Modifier.fillMaxSize().disintegrate(screenState)) { ... }
 Apply `disintegrate` before `clip`/`background` in the modifier chain so the snapshot includes them. Put
 buttons that should stay visible outside the container you dust. The sample app has a tab for each case,
 including a **Snap screen** button.
+
+## Gallery
+
+Every effect, rendered with the library's own particle engine. Open
+[docs/showcase/index.html](docs/showcase/index.html) for an interactive version with the code for each.
+
+| Left to right | Right to left | Top to bottom |
+| --- | --- | --- |
+| <img src="docs/showcase/gifs/direction-left-to-right.gif" width="260"> | <img src="docs/showcase/gifs/direction-right-to-left.gif" width="260"> | <img src="docs/showcase/gifs/direction-top-to-bottom.gif" width="260"> |
+| **Bottom to top** | **Random** | **Wind and scatter** |
+| <img src="docs/showcase/gifs/direction-bottom-to-top.gif" width="260"> | <img src="docs/showcase/gifs/direction-random.gif" width="260"> | <img src="docs/showcase/gifs/wind-scatter.gif" width="260"> |
+| **Image** | **Whole screen** | **Dismiss a list item** |
+| <img src="docs/showcase/gifs/image.gif" width="260"> | <img src="docs/showcase/gifs/screen.gif" width="260"> | <img src="docs/showcase/gifs/list-dismiss.gif" width="260"> |
 
 ## Tuning
 

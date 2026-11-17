@@ -1,0 +1,126 @@
+<title>DustAway Showcase</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;700&display=swap">
+<style>
+/* Layout: one dark stage that matches the GIF background, hero on top, a picker + live preview, then install steps. */
+:root{
+  --bg:#141220; --panel:#1c1930; --line:#2d2947; --fg:#f2eff9; --muted:#a19cbc;
+  --ember:#ff7a59; --violet:#8b6cff; --code:#0e0c19;
+  --display:"Space Grotesk",system-ui,sans-serif; --body:Inter,system-ui,sans-serif; --mono:"JetBrains Mono",ui-monospace,monospace;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font:16px/1.6 var(--body);margin:0;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 64px}
+.wrap{max-width:1080px;margin:0 auto}
+a{color:var(--ember)}
+header.hero{display:grid;grid-template-columns:1.05fr 1fr;gap:40px;align-items:center;padding-block:56px 40px}
+.eyebrow{font:500 12px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--ember)}
+h1{font:700 clamp(40px,7vw,68px)/1 var(--display);margin:12px 0 16px;letter-spacing:-.03em;text-wrap:balance}
+h1 span{background:linear-gradient(90deg,var(--violet),var(--ember));-webkit-background-clip:text;background-clip:text;color:transparent}
+.lede{color:var(--muted);max-width:46ch;margin:0 0 24px}
+.stage{background:var(--bg);border:1px solid var(--line);border-radius:20px;display:grid;place-items:center;padding:8px;min-height:260px;min-width:0}
+.stage img{display:block;max-width:100%;height:auto;border-radius:14px}
+.code{position:relative;background:var(--code);border:1px solid var(--line);border-radius:12px;font:400 13px/1.7 var(--mono);color:#d9d4ef;padding:16px 56px 16px 18px;overflow-x:auto;white-space:pre;margin:0}
+.copy{position:absolute;top:10px;right:10px;background:var(--panel);color:var(--fg);border:1px solid var(--line);border-radius:8px;font:500 12px var(--body);padding:6px 10px;cursor:pointer}
+.copy:hover{border-color:var(--ember)} .copy:focus-visible,button:focus-visible{outline:2px solid var(--ember);outline-offset:2px}
+.k{color:#ff9d84}.s{color:#9be3b4}.c{color:#7a759a}.f{color:#b7a6ff}
+h2{font:700 clamp(26px,4vw,36px)/1.1 var(--display);letter-spacing:-.02em;margin:56px 0 8px;text-wrap:balance}
+.sub{color:var(--muted);margin:0 0 24px;max-width:60ch}
+.demo{display:grid;grid-template-columns:240px 1fr;gap:20px;align-items:start}
+.picker{display:flex;flex-direction:column;gap:6px;min-width:0}
+.group{font:500 11px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:10px 0 2px}
+.group:first-child{margin-top:0}
+.picker button{text-align:left;background:transparent;color:var(--muted);border:1px solid transparent;border-radius:10px;padding:9px 12px;font:500 14px var(--body);cursor:pointer}
+.picker button:hover{color:var(--fg);background:var(--panel)}
+.picker button[aria-selected="true"]{color:var(--fg);background:var(--panel);border-color:var(--ember)}
+.preview{display:flex;flex-direction:column;gap:14px;min-width:0}
+.preview .stage{min-height:340px}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.step{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:20px;min-width:0;display:flex;flex-direction:column;gap:12px}
+.step h3{font:700 18px var(--display);margin:0}
+.step p{margin:0;color:var(--muted);font-size:14px}
+.step .code{padding:12px 14px;font-size:12px}
+.step .copy{display:none}
+footer{margin-top:56px;color:var(--muted);font-size:14px;display:flex;gap:16px;flex-wrap:wrap}
+@media (max-width:820px){header.hero{grid-template-columns:1fr}.demo{grid-template-columns:1fr}
+  .picker{flex-direction:row;flex-wrap:wrap}.group{width:100%}.steps{grid-template-columns:1fr}}
+</style>
+<div class="wrap">
+<header class="hero">
+  <div>
+    <div class="eyebrow">Jetpack Compose · Android</div>
+    <h1>Make any composable <span>turn to dust</span></h1>
+    <p class="lede">One modifier. Cards, images, whole screens and list items crumble into drifting particles, then come back.</p>
+    <pre class="code" id="hero-install"><button class="copy" data-copy="#hero-install">Copy</button><span class="k">implementation</span>(<span class="s">"com.github.RaiyanShahid91.DustAway:dustaway:0.1.0"</span>)</pre>
+  </div>
+  <div class="stage"><img src="gifs/direction-left-to-right.gif" alt="A card turning to dust from left to right and reassembling"></div>
+</header>
+
+<h2>See every effect</h2>
+<p class="sub">Each preview is rendered with the library's own particle engine. Pick one to see it and the code behind it.</p>
+<section class="demo">
+  <div class="picker" role="tablist" aria-label="Effects" id="picker"></div>
+  <div class="preview">
+    <div class="stage"><img id="gif" src="" alt=""></div>
+    <pre class="code" id="snippet"><button class="copy" data-copy="#snippet-text">Copy</button><span id="snippet-text"></span></pre>
+  </div>
+</section>
+
+<h2>Use it in 3 steps</h2>
+<p class="sub">Works with minSdk 24 and Compose UI 1.7 or newer.</p>
+<section class="steps">
+  <div class="step"><h3>1. Add the dependency</h3><p>Add JitPack, then the library.</p>
+    <pre class="code"><span class="c">// settings.gradle.kts</span>
+maven(<span class="s">"https://jitpack.io"</span>)
+
+<span class="c">// app/build.gradle.kts</span>
+<span class="k">implementation</span>(<span class="s">"com.github.RaiyanShahid91
+  .DustAway:dustaway:0.1.0"</span>)</pre></div>
+  <div class="step"><h3>2. Attach the modifier</h3><p>Create a state and put it on any composable.</p>
+    <pre class="code"><span class="k">val</span> state = <span class="f">rememberDisintegrationState</span>()
+
+<span class="f">Card</span>(Modifier.<span class="f">disintegrate</span>(state)) {
+    <span class="f">Text</span>(<span class="s">"Gone in a moment"</span>)
+}</pre></div>
+  <div class="step"><h3>3. Trigger it</h3><p>Call it from a coroutine.</p>
+    <pre class="code">scope.<span class="f">launch</span> { state.<span class="f">disintegrate</span>() }
+scope.<span class="f">launch</span> { state.<span class="f">restore</span>() }</pre></div>
+</section>
+
+<footer>
+  <a href="https://github.com/RaiyanShahid91/DustAway">GitHub</a>
+  <a href="https://jitpack.io/#RaiyanShahid91/DustAway">JitPack</a>
+  <span>Apache License 2.0</span>
+</footer>
+</div>
+<script>
+var DEMOS=[
+ {g:"Directions",n:"Left to right",f:"direction-left-to-right",c:"DustConfig(direction = SweepDirection.LEFT_TO_RIGHT)",w:"Default. The front sweeps from the left edge."},
+ {g:"Directions",n:"Right to left",f:"direction-right-to-left",c:"DustConfig(direction = SweepDirection.RIGHT_TO_LEFT)"},
+ {g:"Directions",n:"Top to bottom",f:"direction-top-to-bottom",c:"DustConfig(direction = SweepDirection.TOP_TO_BOTTOM)"},
+ {g:"Directions",n:"Bottom to top",f:"direction-bottom-to-top",c:"DustConfig(direction = SweepDirection.BOTTOM_TO_TOP)"},
+ {g:"Directions",n:"Random",f:"direction-random",c:"DustConfig(direction = SweepDirection.RANDOM)"},
+ {g:"Tuning",n:"Wind and scatter",f:"wind-scatter",c:"DustConfig(\n    windAngleDegrees = 90f,   // drift straight up\n    scatter = 0.8f,          // wide cloud\n    distanceFraction = 0.6f,\n)"},
+ {g:"Works on anything",n:"Image",f:"image",c:"Image(\n    painter = painter,\n    contentDescription = null,\n    modifier = Modifier.disintegrate(imageState),\n)"},
+ {g:"Works on anything",n:"Whole screen",f:"screen",c:"Column(\n    Modifier.fillMaxSize().disintegrate(screenState)\n) { /* your screen */ }"},
+ {g:"Works on anything",n:"Dismiss a list item",f:"list-dismiss",c:"DisintegrateVisibility(\n    visible = !done,\n    onDisintegrated = { items.remove(item) },\n) {\n    TaskCard(item, onClick = { done = true })\n}"}
+];
+var picker=document.getElementById("picker"),gif=document.getElementById("gif"),snip=document.getElementById("snippet-text"),last="";
+DEMOS.forEach(function(d,i){
+  if(d.g!==last){var h=document.createElement("div");h.className="group";h.textContent=d.g;picker.appendChild(h);last=d.g}
+  var b=document.createElement("button");b.textContent=d.n;b.setAttribute("role","tab");b.dataset.i=i;picker.appendChild(b);
+});
+function show(i){
+  var d=DEMOS[i];gif.src="gifs/"+d.f+".gif";gif.alt=d.n+" effect";snip.textContent=d.c;
+  picker.querySelectorAll("button").forEach(function(b){b.setAttribute("aria-selected",b.dataset.i==i)});
+}
+picker.addEventListener("click",function(e){var b=e.target.closest("button");if(b)show(+b.dataset.i)});
+document.addEventListener("click",function(e){
+  var b=e.target.closest(".copy");if(!b)return;
+  var el=document.querySelector(b.dataset.copy)||b.parentNode;var text=el.textContent.replace(/^Copy/,"");
+  var ok=function(){b.textContent="Copied";setTimeout(function(){b.textContent="Copy"},1200)};
+  try{navigator.clipboard.writeText(text).then(ok,function(){})}catch(x){}
+});
+show(0);
+</script>
