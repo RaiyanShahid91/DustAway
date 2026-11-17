@@ -1,0 +1,24 @@
+name: Bug report
+description: Something doesn't work as expected
+labels: [bug]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened?
+      description: What did you draw and what did you expect?
+    validations:
+      required: true
+  - type: textarea
+    id: result
+    attributes:
+      label: Recognizer output
+      description: What you expected and what you saw (and the DustConfig you used).
+  - type: input
+    id: version
+    attributes:
+      label: DustAway version
+  - type: input
+    id: device
+    attributes:
+      label: Device and Android version
