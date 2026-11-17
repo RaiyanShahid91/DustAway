@@ -21,9 +21,9 @@ from a phone. Record the sample app yourself to see it on a device.*
 
 Early release (0.1.0). The particle engine is plain Kotlin and covered by unit tests. The Compose layer
 and sample app are built by CI; if something misbehaves on your device, please
-[open an issue](https://github.com/RaiyanShahid91/DustAway/issues/new/choose).
+[open an issue](https://github.com/RaiyanShahid/DustAway/issues/new/choose).
 
-Available through [JitPack](https://jitpack.io/#RaiyanShahid91/DustAway) once a release tag is published.
+Available through [JitPack](https://jitpack.io/#RaiyanShahid/DustAway) once a release tag is published.
 
 ## Install
 
@@ -45,7 +45,7 @@ Then add the dependency:
 ```kotlin
 // app/build.gradle.kts
 dependencies {
-    implementation("com.github.RaiyanShahid91.DustAway:dustaway:0.1.0")
+    implementation("com.github.RaiyanShahid.DustAway:dustaway:0.1.0")
 }
 ```
 
