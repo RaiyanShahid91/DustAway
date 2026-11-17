@@ -51,6 +51,13 @@ dependencies {
 }
 
 publishing {
+    repositories {
+        // Static Maven repo served by GitHub Pages from docs/maven (see README).
+        maven {
+            name = "docs"
+            url = uri(rootProject.file("docs/maven"))
+        }
+    }
     publications {
         register<MavenPublication>("release") {
             groupId = "com.raiyanshahid"

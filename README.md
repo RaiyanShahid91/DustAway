@@ -23,11 +23,11 @@ Early release (0.1.0). The particle engine is plain Kotlin and covered by unit t
 and sample app are built by CI; if something misbehaves on your device, please
 [open an issue](https://github.com/RaiyanShahid91/DustAway/issues/new/choose).
 
-Available through [JitPack](https://jitpack.io/#RaiyanShahid91/DustAway) once a release tag is published.
+Hosted as a static Maven repository on GitHub Pages (`docs/maven`), so no account or sign-up is needed.
 
 ## Install
 
-Add JitPack to your repositories:
+Add the DustAway repository:
 
 ```kotlin
 // settings.gradle.kts
@@ -35,7 +35,7 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
-        maven("https://jitpack.io")
+        maven("https://raiyanshahid91.github.io/DustAway/maven")
     }
 }
 ```
@@ -49,14 +49,14 @@ dependencies {
 }
 ```
 
-Prefer not to use JitPack? Copy the `dustaway` module into your project and use
+Prefer to copy the code instead? Copy the `dustaway` module into your project and use
 `implementation(project(":dustaway"))`.
 
 Requires minSdk 24 and Jetpack Compose UI 1.7 or newer (it uses `GraphicsLayer` to capture content).
 
 ## Use it in 3 steps
 
-1. Add JitPack and the dependency (see **Install** above), then sync Gradle.
+1. Add the repository and the dependency (see **Install** above), then sync Gradle.
 2. In your composable, create a state and attach the modifier:
 
    ```kotlin
