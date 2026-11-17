@@ -1,0 +1,129 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "com.raiyanshahid",
+    "module": "dustaway",
+    "version": "0.1.0",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "9.4.1"
+    }
+  },
+  "variants": [
+    {
+      "name": "releaseVariantReleaseApiPublication",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.libraryelements": "aar",
+        "org.gradle.usage": "java-api"
+      },
+      "dependencies": [
+        {
+          "group": "androidx.compose.ui",
+          "module": "ui"
+        },
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib",
+          "version": {
+            "requires": "2.3.10"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "dustaway-0.1.0.aar",
+          "url": "dustaway-0.1.0.aar",
+          "size": 35949,
+          "sha512": "4faf2f9f9b0b25b34fa0d523ea0a6827374a60fd9723d4a6eba74fbedd31689426258268416f9ac78c96f174abfe832f46c0a9afd09251f77bc0208a6232fe35",
+          "sha256": "9e6b351e29c21289a6955e8d093f2b3478ffa5d0927aa60e053cef7f76a86a00",
+          "sha1": "eb757c7d8b925919df73acf7063625d60787a125",
+          "md5": "3ebf3ed45b3b1b809b8cd2b706fa3fe5"
+        }
+      ]
+    },
+    {
+      "name": "releaseVariantReleaseRuntimePublication",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.libraryelements": "aar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "dependencies": [
+        {
+          "group": "androidx.compose",
+          "module": "compose-bom",
+          "version": {
+            "requires": "2026.04.01"
+          },
+          "attributes": {
+            "org.gradle.category": "platform"
+          }
+        },
+        {
+          "group": "androidx.compose.animation",
+          "module": "animation-core"
+        },
+        {
+          "group": "androidx.compose.foundation",
+          "module": "foundation"
+        },
+        {
+          "group": "org.jetbrains.kotlinx",
+          "module": "kotlinx-coroutines-android",
+          "version": {
+            "requires": "1.10.2"
+          }
+        },
+        {
+          "group": "androidx.compose.ui",
+          "module": "ui"
+        },
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib",
+          "version": {
+            "requires": "2.3.10"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "dustaway-0.1.0.aar",
+          "url": "dustaway-0.1.0.aar",
+          "size": 35949,
+          "sha512": "4faf2f9f9b0b25b34fa0d523ea0a6827374a60fd9723d4a6eba74fbedd31689426258268416f9ac78c96f174abfe832f46c0a9afd09251f77bc0208a6232fe35",
+          "sha256": "9e6b351e29c21289a6955e8d093f2b3478ffa5d0927aa60e053cef7f76a86a00",
+          "sha1": "eb757c7d8b925919df73acf7063625d60787a125",
+          "md5": "3ebf3ed45b3b1b809b8cd2b706fa3fe5"
+        }
+      ]
+    },
+    {
+      "name": "releaseVariantReleaseSourcePublication",
+      "attributes": {
+        "org.gradle.category": "documentation",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.docstype": "sources",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "dustaway-0.1.0-sources.jar",
+          "url": "dustaway-0.1.0-sources.jar",
+          "size": 10127,
+          "sha512": "081f30a9cbeb87d83017be687680116c4114cb9e4d1c7becc6beb54b629745ab3e95d802617f435be2e11b72edfd02eccc3f955026406f34e03bc759927196e9",
+          "sha256": "e8b26d7cd94522594dcfe3ae5a445e402aa0f16af58483cca069b0b87a9620b9",
+          "sha1": "f756fad492015350a78923b6dcbeccff95d2e476",
+          "md5": "eb1fbf6964b126267498b7dd1c069b59"
+        }
+      ]
+    }
+  ]
+}
